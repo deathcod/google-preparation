@@ -1,2 +1,2 @@
 # google-preparation
-This is my initiative to give my best to reach my dream company
+This is our initiative to give our best to reach our dream company.
