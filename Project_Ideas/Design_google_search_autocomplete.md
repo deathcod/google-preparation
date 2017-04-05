@@ -7,7 +7,7 @@
 
 ### Suggestions
 
-** Suggestion 1 **
+***Suggestion 1***
 
 Can be solved like:
 1) Take the word user is giving
@@ -15,7 +15,7 @@ Can be solved like:
 3) create a manny to one relationship to LRU DB of that word
 4) Based upon other facts like location, time, history etc find the probabilty and the suggestion of the user
 
-** Suggestion 2 **
+***Suggestion 2***
 
 This is an open ended question, but here are some of the themes. 
 How will you store the answer? 
