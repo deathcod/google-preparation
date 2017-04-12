@@ -23,15 +23,15 @@ public:
 class CIRCULAR_LINKEDLIST
 {
 public:
-	node *parent;
+	node *ptp;
 public:
 	CIRCULAR_LINKEDLIST()
 	{
-		parent = NULL;
+		ptp = NULL;
 	};
 	~CIRCULAR_LINKEDLIST();
 	void insert(int value);
-	bool del(node *x);
+	bool del(int index);
 	bool search(int value);
 	int get_top();
 	int get_top(node *x);
@@ -41,85 +41,70 @@ public:
 void CIRCULAR_LINKEDLIST :: insert(int value)
 {
 	node *z = new node(value);
-	if(parent == NULL)
+	if(ptp == NULL)
 	{
-		parent = z;
-		z->set_next(parent);
+		ptp = z;
+		z->set_next(ptp);
 	}
 	else
 	{
-		node *f = parent->get_next();
-		parent->set_next(z);
+		node *f = ptp->get_next();
+		ptp->set_next(z);
 		z->set_next(f);
+		ptp = z;
 	}
 }
 
-bool CIRCULAR_LINKEDLIST :: del(node *x)
+bool CIRCULAR_LINKEDLIST :: del(int index)
 {
-	if(parent == NULL)
-		return false;
-
-	if(x == NULL)
-		return false;
-
-	if (parent == x)
+	if(ptp == NULL)
 	{
-		if (parent->get_next() == parent)
-		{
-			cout << "CASE 1" << "\n";
-			parent = NULL;
-		}
+		cout << "no value\n";
+		exit(0);
+	}
+	node *parent = ptp->get_next();
+	if(index == 0)
+	{
+		if(parent->get_next() == parent)
+			ptp = NULL;
 		else
-		{
-			parent->set_value(parent->get_next()->get_value());
-			parent->set_next(parent->get_next()->get_next());
-			cout << "CASE 2" << "\n";
-		}
+			ptp->set_next(parent->get_next());
 	}
 	else
 	{
-		node *pre = parent->get_next();
-		if(pre->get_next() == parent and pre == x)
+		int count = 0;
+		while(count < index -1)
 		{
-			parent->set_next(parent);
-			cout << "CASE 4" << "\n";
+			count++;
+			parent = parent->get_next();
+			if(parent == ptp) break;
 		}
-		else
-		{
-			pre = parent;
-			while(pre->get_next()!=x and pre->get_next() != parent)
-			{
-				pre = pre->get_next();
-			}
-			if(pre->get_next() == parent)
-				return false;
+		if(parent == ptp)
+			return false;
 
-			pre->set_value(pre->get_next()->get_value());
-			pre->set_next(pre->get_next()->get_next());
-			cout << "CASE 5" << "\n";
-		}
+ 		if(parent->get_next() == ptp)
+			ptp = parent;
+
+		parent->set_next(parent->get_next()->get_next());
 	}
 	return true;
 }
 
 bool CIRCULAR_LINKEDLIST :: search(int value)
 {
-	node *z = parent;
-	if(z->get_value() == value)
-		return true;
-
-	z = parent->get_next();
-	while(z!=parent and z->get_value() == value)
+	node *z = ptp->get_next();
+	do
 	{
+		if(z->get_value() == value) return true;
 		z = z->get_next();
-	}
-	return(z != parent);
-
+	}while(z!=ptp->get_next());
+	
+	return false;
 }
 
 int CIRCULAR_LINKEDLIST :: get_top()
 {
-	return parent->get_value();
+	return ptp->get_next()->get_value();
 }
 
 
@@ -131,8 +116,8 @@ int CIRCULAR_LINKEDLIST :: get_top(node *x)
 
 void CIRCULAR_LINKEDLIST :: display()
 {
-	node *z = parent;
-	if(parent == NULL)
+	node *z = ptp->get_next();
+	if(ptp == NULL)
 		return;
 
 	cout << "|| ";
@@ -140,7 +125,7 @@ void CIRCULAR_LINKEDLIST :: display()
 	{
 		cout << z->get_value() << ",";
 		z = z->get_next(); 
-	} while (z!=parent);
+	} while (z!=ptp->get_next());
 	cout << "|| \n";
 }
 
@@ -152,34 +137,19 @@ int main(int argc, char const *argv[])
 	x->insert(10);
 
 	//CASE 1
-	cout << x->del(x->parent)<< "\n";
-	cout << x->del(x->parent)<< "\n";
+	cout << x->del(0)<< "\n";
+	//cout << x->del(0)<< "\n";
 	x->insert(12);
 	x->insert(13);
 	x->insert(14);
 	x->display();
 
-	cout << x->del(x->parent)<< "\n";
+	// << x->del(1)<< "\n";
 	x->insert(14);
 	x->insert(15);
 
+	cout << x->del(0)<< "\n";
 	x->display();
-	// cout << x->del(x->parent->get_next()) << "\n";
-	// cout << x->get_top(x->parent) << " ";
-	// cout << x->get_top(x->parent->get_next()) << " ";
-
-	// cout << x->del(x->parent->get_next())<< "\n";
-	// cout << x->get_top(x->parent) << " ";
-	// cout << x->get_top(x->parent->get_next()) << " ";
-
-	// cout << x->del(x->parent->get_next())<< "\n";
-	// cout << x->get_top(x->parent) << " ";
-	// cout << x->get_top(x->parent->get_next()) << " ";
-
-	// cout << x->del(x->parent->get_next())<< "\n";
-	// cout << x->get_top(x->parent) << " ";
- // 	cout << x->get_top(x->parent->get_next()) << " ";
- // 	cout << x->get_top(x->parent->get_next()->get_next()->get_next()) << " ";
 
 	return 0;
 }
