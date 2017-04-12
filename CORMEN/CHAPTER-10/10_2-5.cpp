@@ -3,7 +3,7 @@ using namespace std;
 
 class node
 {
-public:
+private:
 	int value;
 	node *next;
 
@@ -22,7 +22,7 @@ public:
 
 class CIRCULAR_LINKEDLIST
 {
-public:
+private:
 	node *ptp;
 public:
 	CIRCULAR_LINKEDLIST()
