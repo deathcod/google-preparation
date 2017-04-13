@@ -7,20 +7,24 @@ private:
 	int value;
 	node *left;
 	node *right;
+	bool right_insert; //This is for Threaded Binary Tree implementation
 public:
 	node(int v)
 	{
 		left = NULL;
 		right = NULL;
+		right_insert = false;
 		value = v;
 	};
 	~node();
 	void set_left(node *x) { left = x;}
 	void set_right(node *x) { right = x;}
 	void set_value(int x) {value = x;}
+	void set_rightinsert(bool x) { right_insert = x;}
 	node *get_left() { return left; }
 	node *get_right() { return right; }
 	int get_value() { return value; }
+	bool get_rightinsert() { return right_insert; }
 };
 
 
@@ -38,6 +42,11 @@ public:
 	void inorder_without_recursion(node *x);
 	void preorder(node *x);
 	void postorder(node *x);
+
+	/*Threaded Binary Tree implementaion*/
+	void convert();
+	void inorder_threaded_binary_tree_traversal();
+
 	node *get_root();
 };
 
@@ -101,6 +110,66 @@ void tree_traversal :: postorder(node *x)
 }
 
 
+void tree_traversal :: convert()
+{
+	stack<node *> z;
+	z.push(root);
+	while(!z.empty())
+	{
+		node *f = z.top();
+		if(f->get_left() != NULL)
+			z.push(f->get_left());
+		else
+		{
+			while(1)
+			{
+				z.pop();
+				if(f->get_right() != NULL)
+				{
+					z.push(f->get_right());
+					break;
+				}
+				if(z.empty()) break;
+				f->set_right(z.top());
+				f->set_rightinsert(true);
+				f = z.top();
+			}
+		}
+	}
+}
+
+void tree_traversal :: inorder_threaded_binary_tree_traversal()
+{
+	node*x = root;
+	while(x != NULL)
+	{
+		if(x->get_left() != NULL)
+			x = x->get_left();
+		else
+		{
+			cout << x->get_value() << " ";
+			if(x->get_rightinsert())
+			{
+				x = x->get_right();
+				cout << x->get_value() << " ";
+				x = x->get_right();
+			}
+			else
+			{
+				x = x->get_right();
+			}
+		}
+	}
+}
+
+/*      1
+    /  \  
+   2    3
+ /  \    \
+4   5     6
+   / \   /
+  7  8  9
+*/
 /*
 OUTPUT
 ======
@@ -186,6 +255,8 @@ int main(int argc, char const *argv[])
 	x->postorder(x->get_root());
 	cout << "\n";
 
-
+	x->convert();
+	x->inorder_threaded_binary_tree_traversal();
+	cout << "\n";
 	return 0;
 }
