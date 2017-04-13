@@ -35,6 +35,7 @@ public:
 	~tree_traversal();
 	void level_order_traversal();
 	void inorder(node *x);
+	void inorder_without_recursion(node *x);
 	void preorder(node *x);
 	void postorder(node *x);
 	node *get_root();
@@ -49,6 +50,35 @@ void tree_traversal :: inorder(node *x)
 	if(x->get_right() != NULL)
 		inorder(x->get_right());
 }
+
+//4 2 7 5 8 1 3 9 6 
+void tree_traversal :: inorder_without_recursion(node *x)
+{
+	stack<node *> z;
+	z.push(x);
+	while(!z.empty())
+	{
+		node *f = z.top();
+		if(f->get_left() != NULL)
+			z.push(f->get_left());
+		else
+		{
+			while(1)
+			{
+				cout << f->get_value() << " ";
+				z.pop();
+				if(f->get_right() != NULL)
+				{
+					z.push(f->get_right());
+					break;
+				}
+				if(z.empty()) break;
+				f = z.top();
+			}
+		}
+	}
+}
+
 
 //1 2 4 5 7 8 3 6 9 
 void tree_traversal :: preorder(node *x)
@@ -145,6 +175,9 @@ int main(int argc, char const *argv[])
 
 	//Depth first search
 	x->inorder(x->get_root());
+	cout << "\n";
+
+	x->inorder_without_recursion(x->get_root());
 	cout << "\n";
 
 	x->preorder(x->get_root());
