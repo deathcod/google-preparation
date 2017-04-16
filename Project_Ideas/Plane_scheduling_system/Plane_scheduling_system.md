@@ -2,7 +2,7 @@
 
 ### Project idea
 
-Design a efficient scheduling algorithm for planes assuming there is only one runway. Every plane takes fixed amount of time to land. And thus the scheduling algorithm takes the time entry and returns if the timing is feasible or not.
+Design a efficient scheduling algorithm for planes landing procedure, assuming there is only one runway. Every plane takes fixed amount of time to land. And thus the scheduling algorithm takes the time entry and returns if the timing is feasible or not.
 
 ***Requirements:***
 
