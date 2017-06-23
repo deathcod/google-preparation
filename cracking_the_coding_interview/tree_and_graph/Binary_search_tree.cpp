@@ -108,6 +108,9 @@ void Binary_search_tree :: del(int val)
 	node *z = right;
 	if(right == NULL)
 		z = left;
+	// if right is not null then offcourse z = right. so we are checking if 
+	// the most smallest value in right if greater than left then set the current left to the 
+	// left of the z(right) which is going to be replaced.
 	if(right != NULL and left != NULL)
 	{
 		node  *temp = search(z, left->get_value());
