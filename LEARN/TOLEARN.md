@@ -26,9 +26,9 @@ So auwsome stuff and fun learning,
 https://www.youtube.com/channel/UCXNeUcG4KpZaYUgYJvgN9tg
 
 ## Design and architecture
-https://www.codeproject.com/Questions/269049/HLD-and-LLD-Desing-Document-Help
-https://www.amazon.in/Pattern-Oriented-Software-Architecture-Patterns-Languages-ebook/dp/B001HZZ0ZW?_encoding=UTF8&ascsubtag=6127a863-09d4-4440-935d-c177eb3f8a1b&tag=googinhydr18418-21&tag=googinkenshoo-21
-https://www.amazon.in/Designing-Data-Intensive-Applications-Reliable-Maintainable-ebook/dp/B06XPJML5D?_encoding=UTF8&ascsubtag=6127a863-09d4-4440-935d-c177eb3f8a1b&tag=googinhydr18418-21&tag=googinkenshoo-21
+https://www.codeproject.com/Questions/269049/HLD-and-LLD-Desing-Document-Help  
+https://www.amazon.in/Pattern-Oriented-Software-Architecture-Patterns-Languages-ebook/dp/  B001HZZ0ZW?_encoding=UTF8&ascsubtag=6127a863-09d4-4440-935d-c177eb3f8a1b&tag=googinhydr18418-21&tag=googinkenshoo-21  
+https://www.amazon.in/Designing-Data-Intensive-Applications-Reliable-Maintainable-ebook/dp/  B06XPJML5D?_encoding=UTF8&ascsubtag=6127a863-09d4-4440-935d-c177eb3f8a1b&tag=googinhydr18418-21&tag=googinkenshoo-21  
 
 #Best resource I found in till now
 https://msdn.microsoft.com/en-us/library/ee658098.aspx 
